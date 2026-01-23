@@ -66,6 +66,8 @@ func handleClient(conn net.Conn) {
 
 	enc.Encode(protocol.Response{
 		Type:     "result",
+		RowsProcessed: req.MatrixSize, 
+		TotalRows: req.MatrixSize,
 		SeqTime:  seqTime,
 		ConcTime: concTime,
 		Speedup:  seqTime / concTime,
