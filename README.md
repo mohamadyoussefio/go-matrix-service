@@ -39,9 +39,14 @@ The project follows a strict Client-Server model:
 
 ## Getting Started
 
-### 1. Build and Run the Server
-The server must be running to accept incoming jobs.
+### 1. Clone the repo and navigate to the folder
+```bash
+git clone https://github.com/mohamadyoussefio/go-matrix-service.git
+cd go-matrix-service
+```
 
+### 2. Build and Run the Server
+The server must be running to accept incoming jobs.
 ```bash
 # Using Makefile
 make server
@@ -52,7 +57,7 @@ make server
 go run ./cmd/srver
 ```
 
-### 2. Run the Client
+### 3. Run the Client
 
 Open a new terminal window to run the client. You can configure the workload using flags.
 
@@ -64,7 +69,7 @@ make client
 #### Custom Configuration:
 ```bash
 # Run with a 2000x2000 matrix and 16 concurrent workers
-make client size=2000 workers=16
+make client s=2000 w=16
 ```
 
 ## Performance Reporting
