@@ -70,16 +70,15 @@ func main() {
 	}
 }
 
+
 func printHeader() {
 	fmt.Print("\033[H\033[2J") // Clear screen
 	fmt.Println(Cyan + Bold + `
-   __  __      _       _        
-  |  \/  |    | |     (_)       
-  | \  / | __ | |_ ___ _ __  __ 
-  | |\/| |/ _'| __/ __| |\ \/ / 
-  | |  | | (_| | || (__| | >  <  
-  |_|  |_|\__,_|\__\___|_|/_/\_\ 
-      HIGH PERF CONCURRENCY      
+  _  _  _  _  ___  ___   __  __  ___  _____  ___  ___  ___  ___  ___ 
+ | || || || |/ __|| __| |  \/  |/   \|_   _|| _ \|_ _|/ __|| __|/ __|
+ | __ || \/ | (_ || _|  | |\/| || - |  | |  |   / | || (_ || _| \__ \
+ |_||_| \__/ \___||___| |_|  |_||_|_|  |_|  |_|_\|___|\___||___||___/
+      HUGE MATRICES MULTIPLICATION
 ` + Reset)
 }
 
@@ -103,7 +102,7 @@ func printBar(curr, total int, start time.Time) {
 }
 
 func printResult(r protocol.Response) {
-	fmt.Println("\n") // Drop down from progress bar
+	fmt.Println("\n") 
 	
 	fmt.Println(Gray + "┌──────────────────────────────────────────┐" + Reset)
 	fmt.Printf("%s│           BENCHMARK RESULTS              │%s\n", Bold, Reset)
