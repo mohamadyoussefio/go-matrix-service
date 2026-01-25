@@ -15,7 +15,7 @@ const reportTemplate = `
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matrix Result</title>
+    <title>Matrix Multiplication | Report</title>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; }
@@ -141,10 +141,12 @@ const reportTemplate = `
             <div class="row"><span>Status</span><span>SUCCESS</span></div>
         </div>
 
-        <div class="actions">
-            <button onclick="downloadCSV()">Download Report .CSV</button>
-            <div class="footer-text">Created by M.Y - View Source Code<div>
-        </div>
+				<div class="actions">
+    				<button onclick="downloadCSV()">Download Report .CSV</button>
+    				<div class="footer-text">
+        			Created by M.Y & M.M • <a href="https://github.com/mohamadyoussefio/go-matrix-service" target="_blank" style="color: #666; text-decoration: underline;">View Source Code</a>
+    				</div>
+				</div>
     </div>
 
     <script>
