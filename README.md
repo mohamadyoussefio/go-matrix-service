@@ -45,7 +45,9 @@ The server must be running to accept incoming jobs.
 ```bash
 # Using Makefile
 make server
+```
 
+```bash
 # Manual Execution
 go run ./cmd/srver
 ```
@@ -58,7 +60,6 @@ Open a new terminal window to run the client. You can configure the workload usi
 ```bash
 make client
 ````
-```
 ```
 
 #### Custom Configuration:
