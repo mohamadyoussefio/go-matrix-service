@@ -59,7 +59,6 @@ Open a new terminal window to run the client. You can configure the workload usi
 #### Default Run (1000x1000 Matrix, 8 Workers):
 ```bash
 make client
-````
 ```
 
 #### Custom Configuration:
