@@ -76,6 +76,8 @@ make client s=2000 w=16
 
 Upon completion of a job, the client automatically generates a report.html file in the project root. This report includes:
 
+![Report Image](assets/reprot.png)
+
 1. Executive Summary: Immediate visual comparison of Sequential vs. Concurrent execution time.
 
 2. Speedup Factor: The calculated efficiency multiplier (e.g., 4.14x).
