@@ -70,11 +70,10 @@ func main() {
 	}
 }
 
-
 func printHeader() {
-	fmt.Print("\033[H\033[2J") // Clear screen
+	fmt.Print("\033[H\033[2J")
 	fmt.Println(Cyan + Bold + `
-  _  _  _  _  ___  ___   __  __  ___  _____  ___  ___  ___  ___  ___ 
+  _  _  _  _  ___  ___   __  __  ___  _____  ___  ___  ___  ___  ___
  | || || || |/ __|| __| |  \/  |/   \|_   _|| _ \|_ _|/ __|| __|/ __|
  | __ || \/ | (_ || _|  | |\/| || - |  | |  |   / | || (_ || _| \__ \
  |_||_| \__/ \___||___| |_|  |_||_|_|  |_|  |_|_\|___|\___||___||___/
@@ -93,25 +92,25 @@ func printBar(curr, total int, start time.Time) {
 	}
 
 	bar := strings.Repeat("█", filled) + strings.Repeat("-", width-filled)
-	
+
 	elapsed := time.Since(start).Seconds()
 	rate := float64(curr) / elapsed
 
-	fmt.Printf("\r%s[%s] %3.0f%% %s| %d/%d | %.0f rows/s   ", 
+	fmt.Printf("\r%s[%s] %3.0f%% %s| %d/%d | %.0f rows/s   ",
 		color, bar, percent*100, Reset, curr, total, rate)
 }
 
 func printResult(r protocol.Response) {
-	fmt.Println("\n") 
-	
+	fmt.Println("\n")
+
 	fmt.Println(Gray + "┌──────────────────────────────────────────┐" + Reset)
 	fmt.Printf("%s│           BENCHMARK RESULTS              │%s\n", Bold, Reset)
 	fmt.Println(Gray + "├──────────────────────────────────────────┤" + Reset)
-	
+
 	fmt.Printf("│ Sequential Time : %s%8.4f s%s             │\n", Red, r.SeqTime, Reset)
 	fmt.Printf("│ Concurrent Time : %s%8.4f s%s             │\n", Green, r.ConcTime, Reset)
 	fmt.Println(Gray + "├──────────────────────────────────────────┤" + Reset)
-	
+
 	fmt.Printf("│ Speedup Factor  : %s%8.2f x%s             │\n", Cyan+Bold, r.Speedup, Reset)
 	fmt.Printf("│ Integrity Check : %s%9.2e%s              │\n", Yellow, r.Checksum, Reset)
 	fmt.Println(Gray + "└──────────────────────────────────────────┘" + Reset)
