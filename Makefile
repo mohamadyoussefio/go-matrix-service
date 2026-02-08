@@ -1,4 +1,3 @@
-# Defaults
 s=1000
 w=8
 

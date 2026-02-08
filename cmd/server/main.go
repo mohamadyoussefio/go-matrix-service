@@ -34,7 +34,8 @@ func handleClient(conn net.Conn) {
 	enc := json.NewEncoder(conn)
 
 	var req protocol.Request
-	if err := dec.Decode(&req); err != nil {
+	err := dec.Decode(&req)
+	if err != nil {
 		return
 	}
 
@@ -44,9 +45,10 @@ func handleClient(conn net.Conn) {
 	matB := matrix.NewRandom(req.MatrixSize, req.Seed+1)
 
 	start := time.Now()
+	// fmt.Printf("%d", start)
 	matA.MultiplySequential(matB)
-	seqTime := time.Since(start).Seconds()
 
+	seqTime := time.Since(start).Seconds()
 	progressChan := make(chan int)
 	go func() {
 		total := 0
@@ -65,14 +67,14 @@ func handleClient(conn net.Conn) {
 	concTime := time.Since(start).Seconds()
 
 	enc.Encode(protocol.Response{
-		Type:     "result",
-		RowsProcessed: req.MatrixSize, 
-		TotalRows: req.MatrixSize,
-		SeqTime:  seqTime,
-		ConcTime: concTime,
-		Speedup:  seqTime / concTime,
-		Checksum: resConc.Checksum(),
+		Type:          "result",
+		RowsProcessed: req.MatrixSize,
+		TotalRows:     req.MatrixSize,
+		SeqTime:       seqTime,
+		ConcTime:      concTime,
+		Speedup:       seqTime / concTime,
+		Checksum:      resConc.Checksum(),
 	})
 
 	fmt.Printf("[%s] Job finished\n", conn.RemoteAddr())
-}	
+}

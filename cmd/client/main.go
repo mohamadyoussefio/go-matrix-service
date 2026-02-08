@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	"flag"
+	"flag" //parse user commands
 	"fmt"
 	"go-matrix-service/internal/protocol"
 	"log"

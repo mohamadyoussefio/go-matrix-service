@@ -19,7 +19,7 @@ const reportTemplate = `
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; }
-        
+
         body {
             background-color: #f0f0f0; /* Light grey background for contrast */
             color: #000;
@@ -49,7 +49,7 @@ const reportTemplate = `
             padding-bottom: 20px;
             text-align: center;
         }
-        
+
         h1 { margin: 0; font-size: 24px; text-transform: uppercase; letter-spacing: 2px; }
         .subtitle { color: #666; font-size: 14px; margin-top: 5px; }
 
@@ -68,13 +68,13 @@ const reportTemplate = `
             background: #fafafa;
             border: 1px dashed black;
         }
-        
+
         .bar-group { display: flex; align-items: center; gap: 15px; }
         .bar-label { width: 100px; font-size: 12px; font-weight: bold; text-transform: uppercase; text-align: right; }
-        
+
         .track { flex-grow: 1; height: 24px; background: #eee; position: relative; }
         .fill { height: 100%; background: black; transition: width 1s ease-out; }
-        
+
         .time-text { margin-left: 10px; font-size: 14px; font-weight: bold; width: 80px; }
 
         /* Data Table */
@@ -98,7 +98,7 @@ const reportTemplate = `
             transition: opacity 0.2s;
         }
         button:hover { opacity: 0.8; }
-        
+
         .footer-text { text-align: center; font-size: 10px; color: #999; margin-top: 15px; }
     </style>
 </head>
@@ -176,16 +176,16 @@ const reportTemplate = `
 func GenerateHTML(r protocol.Response) {
 	type PageData struct {
 		protocol.Response
-		InverseSpeedup    float64 
+		InverseSpeedup    float64
 		ElementsFormatted string
 		TimeStamp         string
 	}
 
 	data := PageData{
-		Response:       r,
-		InverseSpeedup: (r.ConcTime / r.SeqTime) * 100.0,
+		Response:          r,
+		InverseSpeedup:    (r.ConcTime / r.SeqTime) * 100.0,
 		ElementsFormatted: fmt.Sprintf("%dM", (r.TotalRows*r.TotalRows)/1_000_000), // e.g. "4M"
-		TimeStamp:      "2024-SESSION",
+		TimeStamp:         "2024-SESSION",
 	}
 
 	f, err := os.Create("report.html")
@@ -208,9 +208,13 @@ func GenerateHTML(r protocol.Response) {
 func openBrowser(url string) {
 	var err error
 	switch runtime.GOOS {
-	case "linux": err = exec.Command("xdg-open", url).Start()
-	case "windows": err = exec.Command("rundll32", "url.dll,FileProtocolHandler", url).Start()
-	case "darwin": err = exec.Command("open", url).Start()
+	case "linux":
+		err = exec.Command("xdg-open", url).Start()
+	case "windows":
+		err = exec.Command("rundll32", "url.dll,FileProtocolHandler", url).Start()
+	case "darwin":
+		err = exec.Command("open", url).Start()
 	}
-	if err != nil {}
+	if err != nil {
+	}
 }
