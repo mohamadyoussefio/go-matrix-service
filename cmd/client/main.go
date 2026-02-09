@@ -114,7 +114,6 @@ func printResult(r protocol.Response) {
 	fmt.Printf("│ Speedup Factor  : %s%8.2f x%s             │\n", Cyan+Bold, r.Speedup, Reset)
 	fmt.Printf("│ Integrity Check : %s%9.2e%s              │\n", Yellow, r.Checksum, Reset)
 	fmt.Println(Gray + "└──────────────────────────────────────────┘" + Reset)
-	fmt.Println("")
 
 	GenerateHTML(r)
 }
