@@ -54,7 +54,7 @@ make server
 
 ```bash
 # Manual Execution
-go run ./cmd/srver
+go run ./cmd/server
 ```
 
 ### 3. Run the Client
