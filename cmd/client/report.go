@@ -185,7 +185,7 @@ func GenerateHTML(r protocol.Response) {
 		Response:          r,
 		InverseSpeedup:    (r.ConcTime / r.SeqTime) * 100.0,
 		ElementsFormatted: fmt.Sprintf("%dM", (r.TotalRows*r.TotalRows)/1_000_000), // e.g. "4M"
-		TimeStamp:         "2024-SESSION",
+		TimeStamp:         "2026-SESSION",
 	}
 
 	f, err := os.Create("report.html")
